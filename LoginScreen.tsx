@@ -1,33 +1,34 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
-//import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
-const LoginScreen = ({navigation}) => {
-  //const navigation = useNavigation();
+const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
   const handleLogin = () => {
     // Navigate to Home screen
-    navigation.navigate("HomeScreen");
+    navigation.navigate('Home');
   };
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Login</Text>
-      <Text>{email}</Text>
-      <TextInput         
+      <TextInput
         style={styles.input}
         placeholder="Email"
         value={email}
         onChangeText={setEmail}
         keyboardType="email-address"
-        autoCapitalize="none"/>
-      <TextInput 
+        autoCapitalize="none"
+      />
+      <TextInput
         style={styles.input}
         placeholder="Password"
         value={password}
         onChangeText={setPassword}
-        secureTextEntry/>
+        secureTextEntry
+      />
       <TouchableOpacity style={styles.button} onPress={handleLogin}>
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
@@ -35,23 +36,29 @@ const LoginScreen = ({navigation}) => {
   );
 };
 
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
     justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#f5f5f5',
+    padding: 16,
   },
-    title: {
+  title: {
     fontSize: 32,
     fontWeight: 'bold',
     marginBottom: 24,
     color: '#333',
   },
   input: {
-    borderColor: 'black',
-    borderWidth: 1
+    width: '80%',
+    height: 50,
+    borderColor: '#ccc',
+    borderWidth: 1,
+    borderRadius: 8,
+    marginBottom: 16,
+    paddingHorizontal: 10,
+    backgroundColor: '#fff',
   },
   button: {
     width: '80%',
@@ -61,11 +68,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 8,
   },
-    buttonText: {
+  buttonText: {
     color: '#fff',
     fontSize: 18,
     fontWeight: 'bold',
-  }
+  },
 });
 
 export default LoginScreen;
